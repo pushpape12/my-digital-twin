@@ -50,3 +50,18 @@ document.querySelectorAll('[data-close]').forEach(button=>button.addEventListene
 document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('close',()=>{if(dialog.id==='agent-dialog'){$('#agent-launcher').setAttribute('aria-expanded','false');if('speechSynthesis' in window)speechSynthesis.cancel();$('#agent-launcher').focus();}}));
 
 $('#agent-dialog').addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();$('#agent-dialog').close();}});
+
+const themeToggle = $('#theme-toggle');
+function syncThemeToggle() {
+ const dark = document.documentElement.dataset.theme === 'dark';
+ themeToggle.setAttribute('aria-pressed', String(dark));
+ themeToggle.setAttribute('aria-label', 'Switch to ' + (dark ? 'light' : 'dark') + ' mode');
+ $('#theme-label').textContent = dark ? 'Light' : 'Dark';
+}
+syncThemeToggle();
+themeToggle.addEventListener('click', () => {
+ const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+ document.documentElement.dataset.theme = theme;
+ try { localStorage.setItem('pushpa-theme', theme); } catch { /* Browsing still works when storage is unavailable. */ }
+ syncThemeToggle();
+});
