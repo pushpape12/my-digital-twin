@@ -18,7 +18,7 @@ The server defaults to port 3000 on loopback. For a hosting platform, set `HOST=
 
 - Clearly disclosed AI twin with an initials avatar.
 - Profile-grounded topic retrieval for typed questions; unknown facts are acknowledged.
-- Five project walkthroughs separating self-reported contributions from illustrative workflows.
+- Eight project walkthroughs separating self-reported contributions from illustrative workflows.
 - Career timeline, education, and LinkedIn contact.
 - Job-description keyword comparison: supported skills, selected undocumented requirements, and questions for human review. It is not an exhaustive assessment or hiring score. Negation and requirement priority are not interpreted.
 - Optional browser speech playback with a standard synthetic voice. Microphone input uses browser speech recognition where supported, usually requiring HTTPS or localhost and permission. A notice appears before recording because the browser provider may process audio remotely.
@@ -45,3 +45,11 @@ Typed chat and pasted job descriptions stay in page memory and are cleared on re
 5. After a successful deployment, share the URL reported by the workflow's `github-pages` environment. The expected address for this exact owner and repository is `https://pushpape12.github.io/my-digital-twin/`; it is not live until publication succeeds.
 
 The workflow runs tests, publishes only the four frontend files, and provides HTTPS. The static site includes the profile-based assistant; a future generative AI agent needs a separate secured backend. Never put API keys in frontend JavaScript or GitHub Pages files. Workflow execution and the published URL must be verified after GitHub access is available.
+
+## Forward Deployed Engineer positioning
+
+The portfolio targets Forward Deployed Engineer roles without claiming that title as current employment. Recent owner-supplied additions cover Business Banking LoanWrapper, prepayment and prepayment OPM, FTP in a CCAR context, Spark cluster optimization for model execution performance, feature-based accuracy improvements without an invented percentage, and reusable skill files. Runtime figures and internal configuration details are withheld at the owner’s request. Public content does not include employer data, code, model parameters, or internal documents.
+
+The older résumé contributes Snowflake operations, Snowpipe, CDC, performance tuning, Terraform, and AWS service experience. Current employment comes from the newer supplied profile. Conflicting education grades are omitted. Personal phone numbers, date of birth, and private contact details from the PDF are not published; the PDF itself is not committed.
+
+LangChain, LangGraph, and RAG appear as planned project extensions, not implemented features or confirmed work experience. Confirm actual usage before promoting these into professional skills. This site itself is included as a shipped personal project.
