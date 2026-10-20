@@ -54,6 +54,10 @@ The older résumé contributes Snowflake operations, Snowpipe, CDC, performance 
 
 LangChain, LangGraph, and RAG appear as planned project extensions, not implemented features or confirmed work experience. Confirm actual usage before promoting these into professional skills. This site itself is included as a shipped personal project.
 
-## Compact portfolio UI
+## Portfolio layout and floating assistant
 
-The landing page now puts the introduction, GitHub and LinkedIn links, updated résumé PDF download, and achievements together. The robot card opens the assistant as a native modal dialog. Work, journey, and role fit open on demand rather than appearing as long page sections. Escape closes dialogs and native modal focus handling returns focus to the launcher. The downloadable résumé is a newly prepared public version using current supplied experience; it excludes private phone numbers, birth date, withheld runtime benchmarks, and conflicting grades. Update the PDF alongside content changes. Static deployments must include `Pushpa-Peddamganti-Resume.pdf`; the Pages workflow copies it explicitly.
+Dark navy and violet styling, subtle background grid, glass-like project cards, section navigation, and a prominent introduction are inspired by the user-selected visual reference. All content and code are specific to this portfolio; no reference-site biography, metrics, images, or source implementation is used. Sections cover about, skills, selected work, experience, achievements, and contact. An initials illustration is used because no portrait was supplied.
+
+A fixed robot launcher at the bottom-right opens a nonmodal assistant panel. Visitors can continue browsing while chatting. It supports explicit close, Escape, a synchronized expanded state, and focus return to the launcher. On mobile it fits within the viewport. Existing voice features and evidence boundaries remain in place.
+
+The downloadable résumé is the updated public version; it excludes private contacts, withheld benchmarks, and conflicting grades. Static deployments must include `Pushpa-Peddamganti-Resume.pdf`; the Pages workflow copies it explicitly. Browser checks passed for all sections, eight project cards, nonmodal chat, factual replies, keyboard close/focus, project dialog, role analysis, PDF download, mobile sizing, and absence of browser errors. Real microphone/audio output remains dependent on browser support and was not tested.

@@ -45,6 +45,8 @@ $('#fit-form').addEventListener('submit',e=>{
  target.append(el('h3','Questions for a human conversation'));const list=el('ul');result.questions.forEach(q=>list.append(el('li',q)));target.append(list,el('p',result.caveat),el('p','Your pasted text stays in this page. It is not uploaded or stored by this app.'));
 });
 
-document.querySelectorAll('[data-open]').forEach(button=>button.addEventListener('click',()=>{document.getElementById(button.dataset.open).showModal();}));
+document.querySelectorAll('[data-open]').forEach(button=>button.addEventListener('click',()=>{const dialog=document.getElementById(button.dataset.open);if(dialog.open){dialog.close();return;}if(dialog.id==='agent-dialog'){dialog.show();$('#agent-launcher').setAttribute('aria-expanded','true');$('#question').focus();}else{dialog.showModal();}}));
 document.querySelectorAll('[data-close]').forEach(button=>button.addEventListener('click',()=>button.closest('dialog').close()));
-document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('close',()=>{if(dialog.id==='agent-dialog'&&'speechSynthesis' in window)speechSynthesis.cancel();}));
+document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('close',()=>{if(dialog.id==='agent-dialog'){$('#agent-launcher').setAttribute('aria-expanded','false');if('speechSynthesis' in window)speechSynthesis.cancel();$('#agent-launcher').focus();}}));
+
+$('#agent-dialog').addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();$('#agent-dialog').close();}});
