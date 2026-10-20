@@ -1,4 +1,4 @@
-import {projects,answer,analyzeRole} from './knowledge.js';
+import {projects,answer,analyzeRole} from './knowledge.js?v=6';
 const $=s=>document.querySelector(s);
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text)node.textContent=text;if(className)node.className=className;return node;};
 function addMessage(text,user=false,source=''){
@@ -56,12 +56,12 @@ function syncThemeToggle() {
  const dark = document.documentElement.dataset.theme === 'dark';
  themeToggle.setAttribute('aria-pressed', String(dark));
  themeToggle.setAttribute('aria-label', 'Switch to ' + (dark ? 'light' : 'dark') + ' mode');
- $('#theme-label').textContent = dark ? 'Light' : 'Dark';
+ $('#theme-label').textContent = dark ? 'Dark mode' : 'Light mode';
 }
 syncThemeToggle();
 themeToggle.addEventListener('click', () => {
  const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
  document.documentElement.dataset.theme = theme;
- try { localStorage.setItem('pushpa-theme', theme); } catch { /* Browsing still works when storage is unavailable. */ }
+ try { localStorage.setItem('pushpa-theme-v2', theme); } catch { /* Browsing still works when storage is unavailable. */ }
  syncThemeToggle();
 });
