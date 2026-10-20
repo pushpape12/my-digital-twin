@@ -6,7 +6,7 @@ function addMessage(text,user=false,source=''){
  if(source)message.append(el('small',source,'source'));
  $('#messages').append(message);$('#messages').scrollTop=$('#messages').scrollHeight;
 }
-const welcome=()=>addMessage('Hi, I’m Pushpa’s AI twin. Ask about her financial ML experience, explore her engineering work, or share a job description below.','', 'Based on the professional information Pushpa supplied');
+const welcome=()=>addMessage('Hi, I’m Pushpa’s AI twin. Ask about her financial ML experience, explore her engineering work, or explore role fit from the home screen.','', 'Based on the professional information Pushpa supplied');
 welcome();
 function ask(text){
  text=text.trim();if(!text)return;
@@ -28,14 +28,14 @@ if(Recognition){
 }else{$('#mic').hidden=true;$('#speech-status').textContent='Type to chat. Voice input is not supported in this browser.';}
 projects.forEach((project,index)=>{
  const button=el('button',null,'project-card');button.type='button';button.append(el('span',String(index+1).padStart(2,'0'),'project-number'),el('small',project.category),el('h3',project.title),el('p',project.summary));
- const tags=el('div',null,'tags');project.tags.forEach(t=>tags.append(el('span',t,'tag')));button.append(tags,el('span','Explore the walkthrough ↗','project-link'));
+ const tags=el('div',null,'tags');project.tags.forEach(t=>tags.append(el('span',t,'tag')));button.append(tags,el('span','Explore the walkthrough','project-link'));
  button.addEventListener('click',()=>{
-  const detail=$('#project-detail');detail.replaceChildren(el('span',project.category,'eyebrow'),el('h2',project.title),el('p',project.summary),el('h3','Reported contribution'),el('p',project.evidence),el('h3','Illustrative workflow'));
+  const detail=$('#project-detail');detail.replaceChildren(el('span',project.category,'eyebrow'),Object.assign(el('h2',project.title),{id:'detail-title'}),el('p',project.summary),el('h3','Reported contribution'),el('p',project.evidence),el('h3','Illustrative workflow'));
   const flow=el('div',null,'flow');project.architecture.forEach((step,i)=>flow.append(el('span',(i+1)+'. '+step)));detail.append(flow,el('h3','Evidence & boundaries'),el('p',project.boundary),el('p','Source: professional profile pasted by Pushpa. No employer documents or independent verification supplied.'));
   $('#project-dialog').showModal();
  });$('#projects').append(button);
 });
-$('#close-dialog').addEventListener('click',()=>$('#project-dialog').close());
+
 $('#project-dialog').addEventListener('click',e=>{if(e.target===$('#project-dialog')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}});
 $('#fit-form').addEventListener('submit',e=>{
  e.preventDefault();const text=$('#job').value.trim();if(!text)return;const result=analyzeRole(text);const target=$('#fit-results');target.replaceChildren();
@@ -44,3 +44,7 @@ $('#fit-form').addEventListener('submit',e=>{
  target.append(el('h3','Evidence to clarify'),el('p',result.gaps.length?result.gaps.join(' · ')+' — not documented in the supplied profile.':'No additional tracked skill gaps detected. Other requirements, seniority, and depth still need review.'));
  target.append(el('h3','Questions for a human conversation'));const list=el('ul');result.questions.forEach(q=>list.append(el('li',q)));target.append(list,el('p',result.caveat),el('p','Your pasted text stays in this page. It is not uploaded or stored by this app.'));
 });
+
+document.querySelectorAll('[data-open]').forEach(button=>button.addEventListener('click',()=>{document.getElementById(button.dataset.open).showModal();}));
+document.querySelectorAll('[data-close]').forEach(button=>button.addEventListener('click',()=>button.closest('dialog').close()));
+document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('close',()=>{if(dialog.id==='agent-dialog'&&'speechSynthesis' in window)speechSynthesis.cancel();}));

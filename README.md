@@ -53,3 +53,7 @@ The portfolio targets Forward Deployed Engineer roles without claiming that titl
 The older résumé contributes Snowflake operations, Snowpipe, CDC, performance tuning, Terraform, and AWS service experience. Current employment comes from the newer supplied profile. Conflicting education grades are omitted. Personal phone numbers, date of birth, and private contact details from the PDF are not published; the PDF itself is not committed.
 
 LangChain, LangGraph, and RAG appear as planned project extensions, not implemented features or confirmed work experience. Confirm actual usage before promoting these into professional skills. This site itself is included as a shipped personal project.
+
+## Compact portfolio UI
+
+The landing page now puts the introduction, GitHub and LinkedIn links, updated résumé PDF download, and achievements together. The robot card opens the assistant as a native modal dialog. Work, journey, and role fit open on demand rather than appearing as long page sections. Escape closes dialogs and native modal focus handling returns focus to the launcher. The downloadable résumé is a newly prepared public version using current supplied experience; it excludes private phone numbers, birth date, withheld runtime benchmarks, and conflicting grades. Update the PDF alongside content changes. Static deployments must include `Pushpa-Peddamganti-Resume.pdf`; the Pages workflow copies it explicitly.
