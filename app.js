@@ -65,3 +65,13 @@ themeToggle.addEventListener('click', () => {
  try { localStorage.setItem('pushpa-theme-v2', theme); } catch { /* Browsing still works when storage is unavailable. */ }
  syncThemeToggle();
 });
+
+const portrait = $('.profile-photo');
+function showPortrait() {
+ if (!portrait.naturalWidth) return;
+ portrait.hidden = false;
+ $('.profile-initials').hidden = true;
+ $('.profile-card').classList.add('has-photo');
+}
+portrait.addEventListener('load', showPortrait);
+if (portrait.complete) showPortrait();
